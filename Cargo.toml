@@ -15,12 +15,15 @@ reqwest = "0.12.9"
 
 [dependencies]
 actix-web = "4"
+config = "0.14.1"
 serde = { version = "1", features = ["derive"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+uuid = { version = "1.11.0", features = ["v4"] }
+chrono = { version = "0.4.38", default-features = false, features = ["clock"] }
 
 # Using table-like toml syntax to avoid a super-long line!
 [dependencies.sqlx]
-version = "0.7"
+version = "0.8.2"
 default-features = false
 features = [
   "runtime-tokio-rustls",
@@ -30,3 +33,6 @@ features = [
   "chrono",
   "migrate"
 ]
+
+[package.metadata.sqlx]
+offline = true
